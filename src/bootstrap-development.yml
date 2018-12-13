@@ -1,0 +1,23 @@
+web:
+  serviceId: null
+  serviceName: nestcloud-user-service
+  port: 8081
+consul:
+  host: localhost
+  port: 8500
+  discoveryHost: localhost
+  health_check:
+    timeout: 1s
+    interval: 10s
+  max_retry: 5
+  retry_interval: 5000
+  config:
+    key: config__{serviceName}__{env}
+    retry: 5
+dataSource:
+  host: localhost
+  port: 3306
+  username: root
+  password:
+  synchronize: true
+  maxQueryExecutionTime: 1000
