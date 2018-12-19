@@ -8,6 +8,11 @@ NestCloud Starter
 $ npm install
 ```
 
+## Dependencies
+
+* Consul
+* Mysql
+
 ## Running the app
 
 ```bash
