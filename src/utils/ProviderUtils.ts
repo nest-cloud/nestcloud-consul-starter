@@ -1,4 +1,5 @@
-import { getCustomRepo } from "../providers";
+import { Connection } from 'typeorm';
+import { getConnectionToken } from '@nestjs/typeorm';
 
 export function components(...components: any[]) {
     const results = [];
@@ -35,4 +36,20 @@ export function repos(...repositories: any[]) {
     });
 
     return results;
+}
+
+export function getRepo(name: string, entity) {
+    return {
+        provide: name,
+        useFactory: (connection: Connection) => connection.getRepository(entity),
+        inject: [getConnectionToken()],
+    };
+}
+
+export function getCustomRepo(name: string, repo) {
+    return {
+        provide: name,
+        useFactory: (connection: Connection) => connection.getCustomRepository(repo),
+        inject: [getConnectionToken()],
+    };
 }

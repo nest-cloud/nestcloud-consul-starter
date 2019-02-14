@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { Get, Middleware } from "nest-feign";
-import { AddHeaderMiddleware } from "./middlewares/AddHeaderMiddleware";
+import { Get, Interceptor } from "nest-feign";
+import { AddHeaderInterceptor } from "./interceptors/AddHeaderInterceptor";
 
 @Injectable()
-@Middleware(AddHeaderMiddleware)
+@Interceptor(AddHeaderInterceptor)
 export class ArticleClient {
     @Get('https://api.apiopen.top/recommendPoetry')
     getArticles() {
