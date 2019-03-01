@@ -8,6 +8,7 @@ import { FeignModule } from 'nest-feign';
 import { NEST_BOOT, NEST_CONSUL_LOADBALANCE, NEST_BOOT_PROVIDER } from 'nest-common';
 import { DatabaseHealthIndicator, TerminusModule, TerminusModuleOptions } from "@nestjs/terminus";
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { GatewayModule } from 'nest-gateway';
 
 import { components, repos } from "./utils/ProviderUtils";
 import * as controllers from './controllers';
@@ -30,11 +31,12 @@ const getTerminusOptions = (db: DatabaseHealthIndicator): TerminusModuleOptions 
 @Module({
     imports: [
         BootModule.register(__dirname, `bootstrap-${ process.env.NODE_ENV || 'development' }.yml`),
-        ConsulModule.register({ adapter: NEST_BOOT }),
-        ConsulConfigModule.register({ adapter: NEST_BOOT }),
-        ConsulServiceModule.register({ adapter: NEST_BOOT }),
-        LoadbalanceModule.register({ adapter: NEST_BOOT }),
-        FeignModule.register({ adapter: NEST_CONSUL_LOADBALANCE }),
+        ConsulModule.register({ dependencies: [NEST_BOOT] }),
+        ConsulConfigModule.register({ dependencies: [NEST_BOOT] }),
+        ConsulServiceModule.register({ dependencies: [NEST_BOOT] }),
+        LoadbalanceModule.register({ dependencies: [NEST_BOOT] }),
+        FeignModule.register({ dependencies: [NEST_CONSUL_LOADBALANCE] }),
+        GatewayModule.register({ dependencies: [NEST_BOOT] }),
         TerminusModule.forRootAsync({
             inject: [DatabaseHealthIndicator],
             useFactory: db => getTerminusOptions(db as DatabaseHealthIndicator),

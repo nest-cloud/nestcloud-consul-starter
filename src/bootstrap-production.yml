@@ -21,3 +21,10 @@ dataSource:
   password: ${ DB_PWD || root }
   synchronize: false
   maxQueryExecutionTime: 1000
+gateway:
+  routes:
+    - id: user
+      # self
+      uri: lb://nestcloud-user-service
+    - id: article
+      uri: https://api.apiopen.top/recommendPoetry
