@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Boot } from 'nest-boot';
+import { Boot } from '@nestcloud/boot';
 
 import { NestLogger } from './logger';
 
@@ -23,7 +23,7 @@ async function bootstrap() {
         await app.close();
         process.exit(0);
     });
-    
+
     await app.listen(boot.get('web.port', 8081));
 }
 

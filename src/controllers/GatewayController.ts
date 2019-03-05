@@ -1,6 +1,6 @@
 import { All, Controller, Param, Req, Res } from "@nestjs/common";
 import { Request, Response } from 'express';
-import { Gateway, InjectGateway } from "nest-gateway";
+import { Gateway, InjectGateway } from "@nestcloud/gateway";
 
 @Controller('/gateway/:service')
 export class GatewayController {

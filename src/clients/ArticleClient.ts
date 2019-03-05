@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Get, Interceptor } from "nest-feign";
+import { Get, Interceptor } from "@nestcloud/feign";
 import { AddHeaderInterceptor } from "./interceptors/AddHeaderInterceptor";
 
 @Injectable()

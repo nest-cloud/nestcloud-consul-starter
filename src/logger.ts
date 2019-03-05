@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as moment from 'moment';
 import * as winston from 'winston';
 import * as mkdirp from 'mkdirp';
-import { Boot } from 'nest-boot';
+import { Boot } from '@nestcloud/boot';
 import { Logger, QueryRunner } from 'typeorm';
 import { LoggerService } from '@nestjs/common';
 

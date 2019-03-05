@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Get } from "nest-feign";
-import { Loadbalanced } from "nest-feign";
+import { Get, Loadbalanced } from "@nestcloud/feign";
 import { User } from "../entities";
 
 @Injectable()

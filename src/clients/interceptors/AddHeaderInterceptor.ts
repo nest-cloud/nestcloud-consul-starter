@@ -1,4 +1,4 @@
-import { IInterceptor } from "nest-feign";
+import { IInterceptor } from "@nestcloud/feign";
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 export class AddHeaderInterceptor implements IInterceptor {

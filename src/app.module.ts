@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
-import { BootModule, Boot } from 'nest-boot';
-import { ConsulModule } from 'nest-consul';
-import { ConsulConfigModule } from 'nest-consul-config';
-import { ConsulServiceModule } from 'nest-consul-service';
-import { LoadbalanceModule } from 'nest-consul-loadbalance';
-import { FeignModule } from 'nest-feign';
-import { NEST_BOOT, NEST_CONSUL_LOADBALANCE, NEST_BOOT_PROVIDER } from 'nest-common';
+import { BootModule, Boot } from '@nestcloud/boot';
+import { ConsulModule } from '@nestcloud/consul';
+import { ConsulConfigModule } from '@nestcloud/consul-config';
+import { ConsulServiceModule } from '@nestcloud/consul-service';
+import { LoadbalanceModule } from '@nestcloud/consul-loadbalance';
+import { FeignModule } from '@nestcloud/feign';
+import { NEST_BOOT, NEST_CONSUL_LOADBALANCE, NEST_BOOT_PROVIDER } from '@nestcloud/common';
 import { DatabaseHealthIndicator, TerminusModule, TerminusModuleOptions } from "@nestjs/terminus";
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { GatewayModule } from 'nest-gateway';
+import { GatewayModule } from '@nestcloud/gateway';
 
 import { components, repos } from "./utils/ProviderUtils";
 import * as controllers from './controllers';

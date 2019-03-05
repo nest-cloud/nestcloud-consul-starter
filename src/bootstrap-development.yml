@@ -6,11 +6,11 @@ consul:
   host: localhost
   port: 8500
   discoveryHost: localhost
-  health_check:
+  healthCheck:
     timeout: 1s
     interval: 10s
-  max_retry: 5
-  retry_interval: 5000
+  maxRetry: 5
+  retryInterval: 5000
   config:
     key: config__{serviceName}__{env}
     retry: 5
