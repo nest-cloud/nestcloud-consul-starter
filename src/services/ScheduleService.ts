@@ -1,10 +1,18 @@
 import { Injectable } from "@nestjs/common";
 import { NestSchedule, Interval } from "nest-schedule";
+import { InjectLogger } from '@nestcloud/logger';
+import { LoggerInstance } from 'winston';
 
 @Injectable()
 export class ScheduleService extends NestSchedule {
+    constructor(
+        @InjectLogger() private readonly logger: LoggerInstance,
+    ) {
+        super();
+    }
+
     @Interval(2000)
     intervalJob() {
-        console.log('executing interval job')
+        this.logger.info('executing interval job')
     }
 }

@@ -1,6 +1,6 @@
 web:
   serviceId: null
-  serviceName: nestcloud-user-service
+  serviceName: nestcloud-starter-service
   port: 8081
 consul:
   host: localhost
@@ -25,6 +25,33 @@ gateway:
   routes:
     - id: user
       # self
-      uri: lb://nestcloud-user-service
+      uri: lb://nestcloud-starter-service
     - id: article
       uri: https://api.apiopen.top/recommendPoetry
+logger:
+  level: info
+  transports:
+    - transport: console
+      colorize: true
+      datePattern: YYYY-MM-DD h:mm:ss
+      label: nestcloud-user-service
+    - transport: file
+      name: info
+      json: false
+      filename: ../logs/all.log
+      datePattern: YYYY-MM-DD h:mm:ss
+      label: nestcloud-starter-service
+      # 200M
+      maxsize: 209715200
+      maxFiles: 10
+    - transport: file
+      name: error
+      level: error
+      json: false
+      filename: ../logs/error.log
+      datePattern: YYYY-MM-DD h:mm:ss
+      label: nestcloud-starter-service
+      # 200M
+      maxsize: 209715200
+      maxFiles: 10
+

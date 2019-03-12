@@ -2,7 +2,10 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Boot } from '@nestcloud/boot';
 
-import { NestLogger } from './logger';
+import { Logger, NestLogger } from '@nestcloud/logger';
+
+Logger.contextPath = __dirname;
+Logger.filename = `bootstrap-${ process.env.NODE_ENV || 'development' }.yml`;
 
 // https
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';

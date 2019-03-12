@@ -15,7 +15,7 @@ import * as controllers from './controllers';
 import * as repositories from './repositories';
 import * as services from './services';
 import * as clients from './clients';
-import { TypeormLogger } from "./logger";
+import { LoggerModule, TypeormLogger } from '@nestcloud/logger';
 
 const getTerminusOptions = (db: DatabaseHealthIndicator): TerminusModuleOptions => ({
     endpoints: [
@@ -30,6 +30,7 @@ const getTerminusOptions = (db: DatabaseHealthIndicator): TerminusModuleOptions 
 
 @Module({
     imports: [
+        LoggerModule.register(),
         BootModule.register(__dirname, `bootstrap-${ process.env.NODE_ENV || 'development' }.yml`),
         ConsulModule.register({ dependencies: [NEST_BOOT] }),
         ConsulConfigModule.register({ dependencies: [NEST_BOOT] }),
