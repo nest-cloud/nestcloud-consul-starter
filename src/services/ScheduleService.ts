@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { NestSchedule, Interval } from "nest-schedule";
+import { NestSchedule, Interval } from "@nestcloud/schedule";
 import { InjectLogger } from '@nestcloud/logger';
 import { LoggerInstance } from 'winston';
 

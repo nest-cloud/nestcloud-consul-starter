@@ -1,18 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Boot } from '@nestcloud/boot';
+import { defaults } from '@nestcloud/schedule';
 
-import { Logger, NestLogger } from '@nestcloud/logger';
-
-Logger.contextPath = __dirname;
-Logger.filename = `bootstrap-${ process.env.NODE_ENV || 'development' }.yml`;
+import { NestLogger } from '@nestcloud/logger';
+import { context, filename } from "./config";
 
 // https
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
+const logger = defaults.logger = new NestLogger({ path: context, filename });
+
 async function bootstrap() {
     const boot = new Boot(__dirname);
-    const app = await NestFactory.create(AppModule, { logger: new NestLogger() });
+    const app = await NestFactory.create(AppModule, { logger });
 
     process.on('SIGINT', async () => {
         setTimeout(() => process.exit(1), 5000);
