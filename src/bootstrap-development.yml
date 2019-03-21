@@ -54,4 +54,6 @@ logger:
       # 200M
       maxsize: 209715200
       maxFiles: 10
+custom:
+  data: test
 

@@ -5,14 +5,20 @@ import { ConsulConfigModule } from '@nestcloud/consul-config';
 import { ConsulServiceModule } from '@nestcloud/consul-service';
 import { LoadbalanceModule } from '@nestcloud/consul-loadbalance';
 import { FeignModule } from '@nestcloud/feign';
-import { NEST_BOOT, NEST_CONSUL_LOADBALANCE, NEST_BOOT_PROVIDER, NEST_TYPEORM_LOGGER_PROVIDER } from '@nestcloud/common';
+import {
+    NEST_BOOT,
+    NEST_CONSUL_LOADBALANCE,
+    NEST_BOOT_PROVIDER,
+    NEST_TYPEORM_LOGGER_PROVIDER,
+    components,
+    repositories
+} from '@nestcloud/common';
 import { TypeOrmHealthIndicator, TerminusModule, TerminusModuleOptions } from "@nestjs/terminus";
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GatewayModule } from '@nestcloud/gateway';
 
-import { components, repos } from "./utils/ProviderUtils";
 import * as controllers from './controllers';
-import * as repositories from './repositories';
+import * as repos from './repositories';
 import * as services from './services';
 import * as clients from './clients';
 import { LoggerModule, TypeormLogger } from '@nestcloud/logger';
@@ -60,7 +66,7 @@ const getTerminusOptions = (db: TypeOrmHealthIndicator): TerminusModuleOptions =
         })
     ],
     controllers: components(controllers),
-    providers: components(repos(repositories), services, clients)
+    providers: components(repositories(repos), services, clients)
 })
 export class AppModule {
 }

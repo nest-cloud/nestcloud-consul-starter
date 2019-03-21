@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Query } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put, Query } from "@nestjs/common";
+import { IsValid, IsNotEmpty } from '@nestcloud/validations';
 import { User } from "../entities";
 import { UserRepository } from "../repositories";
 import { UserService } from "../services";
@@ -20,7 +21,12 @@ export class UserController {
     }
 
     @Post()
-    async createUser(@Body('user') user: User) {
+    async createUser(@Body('user', new IsValid()) user: User) {
         await this.userRepo.save(user);
+    }
+
+    @Put(':userId')
+    async updateUser(@Param('userId') userId: string, @Body('name', new IsNotEmpty()) name: string) {
+        await this.userRepo.update(userId, { name });
     }
 }

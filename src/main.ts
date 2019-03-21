@@ -12,7 +12,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const logger = defaults.logger = new NestLogger({ path: context, filename });
 
 async function bootstrap() {
-    const boot = new Boot(__dirname);
+    const boot = new Boot(__dirname, filename);
     const app = await NestFactory.create(AppModule, { logger });
 
     process.on('SIGINT', async () => {

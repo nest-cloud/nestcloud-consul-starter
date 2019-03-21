@@ -10,7 +10,6 @@ export class ArticleController {
 
     @Get()
     async getArticles() {
-        console.log('test')
         return await this.articleClient.getArticles();
     }
 }
