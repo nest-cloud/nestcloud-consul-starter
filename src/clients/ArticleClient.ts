@@ -1,11 +1,11 @@
-import { Injectable } from "@nestjs/common";
-import { Get, Interceptor } from "@nestcloud/feign";
-import { AddHeaderInterceptor } from "./interceptors/AddHeaderInterceptor";
+import { Injectable } from '@nestjs/common';
+import { Get, UseInterceptor } from '@nestcloud/feign';
+import { AddHeaderInterceptor } from './interceptors/AddHeaderInterceptor';
 
 @Injectable()
-@Interceptor(AddHeaderInterceptor)
+@UseInterceptor(AddHeaderInterceptor)
 export class ArticleClient {
-    @Get('https://api.apiopen.top/recommendPoetry')
-    getArticles() {
-    }
+  @Get('https://api.apiopen.top/recommendPoetry')
+  getArticles() {
+  }
 }

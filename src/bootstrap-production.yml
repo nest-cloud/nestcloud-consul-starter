@@ -1,7 +1,3 @@
-web:
-  serviceId: null
-  serviceName: nestcloud-user-service
-  port: ${ PORT || 8081 }
 consul:
   host: ${ CONSUL_HOST || localhost }
   port: ${ CONSUL_PORT || 8500 }
@@ -12,8 +8,12 @@ consul:
   maxRetry: 5
   retryInterval: 5000
   config:
-    key: config__{serviceName}__{env}
+    key: nestcloud-starter-service-config
     retry: 5
+  service:
+    id: null
+    name: nestcloud-starter-service
+    port: ${ PORT || 8081 }
 dataSource:
   host: ${ DB_HOST || localhost }
   port: ${ DB_PORT || 3306 }
