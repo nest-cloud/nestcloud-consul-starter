@@ -1,7 +1,7 @@
 consul:
-  host: ${ CONSUL_HOST || localhost }
-  port: ${ CONSUL_PORT || 8500 }
-  discoveryHost: ${ CONSUL_DISCOVERY_HOST || localhost }
+  host: ${{ CONSUL_HOST }}
+  port: ${{ CONSUL_PORT }}
+  discoveryHost: ${{ CONSUL_DISCOVERY_HOST }}
   healthCheck:
     timeout: 1s
     interval: 10s
@@ -13,12 +13,12 @@ consul:
   service:
     id: null
     name: nestcloud-starter-service
-    port: ${ PORT || 8081 }
+    port: ${{ PORT }}
 dataSource:
-  host: ${ DB_HOST || localhost }
-  port: ${ DB_PORT || 3306 }
-  username: ${ DB_USER || root }
-  password: ${ DB_PWD || root }
+  host: ${{ DB_HOST }}
+  port: ${{ DB_PORT }}
+  username: ${{ DB_USER }}
+  password: ${{ DB_PWD }}
   synchronize: false
   maxQueryExecutionTime: 1000
 gateway:
