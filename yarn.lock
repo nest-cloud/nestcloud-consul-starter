@@ -3483,8 +3483,8 @@ mpath@0.5.1:
   resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.5.1.tgz#17131501f1ff9e6e4fbc8ffa875aa7065b5775ab"
 
 mqtt-packet@^5.6.0:
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/mqtt-packet/-/mqtt-packet-5.6.0.tgz#923fb704d0ce0bd6ac81c7e1cc09469b1512d2fd"
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/mqtt-packet/-/mqtt-packet-5.6.1.tgz#8ecafce091f5af460664268a22b22091c8915f7b"
   dependencies:
     bl "^1.2.1"
     inherits "^2.0.3"
