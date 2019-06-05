@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { defaults } from '@nestcloud/schedule';
 import { NestLogger } from '@nestcloud/logger';
 import { NestCloud } from '@nestcloud/core';
 import { context, filename } from './config';
@@ -8,10 +7,10 @@ import { context, filename } from './config';
 // https
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const logger = defaults.logger = new NestLogger({ path: context, filename });
-
 async function bootstrap() {
-  const app = NestCloud.create(await NestFactory.create(AppModule, { logger }));
+  const app = NestCloud.create(await NestFactory.create(AppModule, {
+    logger: new NestLogger({ path: context, filename }),
+  }));
 
   process.on('SIGINT', async () => {
     setTimeout(() => process.exit(1), 5000);

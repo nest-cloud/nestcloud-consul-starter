@@ -20,7 +20,7 @@ export class ScheduleService extends NestSchedule {
   @WatchKV('test-key', 'text', 'default consul data')
   private readonly consulData: string;
 
-  constructor(
+  public constructor(
     @InjectLogger() private readonly logger: LoggerInstance,
   ) {
     super();

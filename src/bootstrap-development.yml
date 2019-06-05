@@ -26,6 +26,13 @@ gateway:
     - id: user
       # self
       uri: lb://nestcloud-starter-service
+      filters:
+        - name: AddRequestHeaderFilter
+          parameters:
+            test-header: test1213123123
+        - name: AddResponseHeaderFilter
+          parameters:
+            response-header: 123123hello
     - id: article
       uri: https://api.apiopen.top/recommendPoetry
 logger:

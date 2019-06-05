@@ -30,119 +30,97 @@
     lodash.camelcase "^4.3.0"
     protobufjs "^6.8.6"
 
-"@nestcloud/boot@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@nestcloud/boot/-/boot-0.2.1.tgz#df03ba34cd53d56744ed1e32e83aff7ada93768c"
-  dependencies:
-    lodash "^4.17.11"
-    reflect-metadata "^0.1.12"
-    yamljs "^0.3.0"
-
-"@nestcloud/boot@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/boot/-/boot-0.2.3.tgz#14dc252341df4646425681c1cfc6338160be99b7"
+"@nestcloud/boot@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/boot/-/boot-0.3.8.tgz#f6589f07f77fd09a3b4e6ca121bd3df456c13be8"
   dependencies:
     handlebars "^4.1.1"
     lodash "^4.17.11"
     reflect-metadata "^0.1.12"
     yamljs "^0.3.0"
 
-"@nestcloud/common@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/common/-/common-0.2.3.tgz#59c46c11d21886b1151eb9e1d9a7bd53affd440b"
+"@nestcloud/brakes@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/brakes/-/brakes-0.3.8.tgz#6c6695121e9b6285f551343e208ac2f96976fa13"
+
+"@nestcloud/common@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/common/-/common-0.3.8.tgz#5242e89e52d6908764c1865c0e04f2f8444d6ba2"
   dependencies:
     lodash "^4.17.11"
 
-"@nestcloud/consul-config@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@nestcloud/consul-config/-/consul-config-0.2.1.tgz#9a51853ff6349082c2a314283128e21a42623553"
-  dependencies:
-    lodash "^4.17.11"
-    reflect-metadata "^0.1.12"
-    yamljs "^0.3.0"
-  optionalDependencies:
-    "@nestcloud/boot" "^0.2.1"
-
-"@nestcloud/consul-config@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/consul-config/-/consul-config-0.2.3.tgz#b2cd62be60e5ff9945a056e95ec62612b5a76bae"
+"@nestcloud/consul-config@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/consul-config/-/consul-config-0.3.8.tgz#d99636d2a2c8a4a59a3e4885c0879ee9e9974472"
   dependencies:
     lodash "^4.17.11"
     reflect-metadata "^0.1.12"
     yamljs "^0.3.0"
   optionalDependencies:
-    "@nestcloud/boot" "^0.2.1"
+    "@nestcloud/boot" "^0.3.8"
 
-"@nestcloud/consul-loadbalance@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@nestcloud/consul-loadbalance/-/consul-loadbalance-0.2.1.tgz#c41bfb80c52ad11991e4cf0a68a33351632d68fa"
+"@nestcloud/consul-loadbalance@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/consul-loadbalance/-/consul-loadbalance-0.3.8.tgz#77d0c366597a44400e5899d109444270fddea13f"
   dependencies:
     axios "^0.18.0"
     lodash "^4.17.11"
     random-js "^2.0.0-rc2"
   optionalDependencies:
-    "@nestcloud/boot" "^0.2.1"
-    "@nestcloud/consul-config" "^0.2.1"
+    "@nestcloud/boot" "^0.3.8"
+    "@nestcloud/consul-config" "^0.3.8"
 
-"@nestcloud/consul-loadbalance@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/consul-loadbalance/-/consul-loadbalance-0.2.3.tgz#747cf33d9a1ea5275ea80c262b55154e4de0df38"
-  dependencies:
-    axios "^0.18.0"
-    lodash "^4.17.11"
-    random-js "^2.0.0-rc2"
-  optionalDependencies:
-    "@nestcloud/boot" "^0.2.1"
-    "@nestcloud/consul-config" "^0.2.1"
-
-"@nestcloud/consul-service@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/consul-service/-/consul-service-0.2.3.tgz#4462a54e4bc211f732548f3cb383feb9a4ef7c91"
+"@nestcloud/consul-service@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/consul-service/-/consul-service-0.3.8.tgz#d9535e684b9d347c09eb0be9597b1e9b26b431f6"
   dependencies:
     blueimp-md5 "^2.10.0"
     lodash "^4.17.11"
     yamljs "^0.3.0"
   optionalDependencies:
-    "@nestcloud/boot" "^0.2.1"
+    "@nestcloud/boot" "^0.3.8"
 
-"@nestcloud/consul@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/consul/-/consul-0.2.3.tgz#780bf1cc142ea4c9b8658538746725bea9dca767"
+"@nestcloud/consul@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/consul/-/consul-0.3.8.tgz#65252e91a393669dec0bc19e78d98e63c93553bd"
   dependencies:
     reflect-metadata "^0.1.13"
     yamljs "^0.3.0"
   optionalDependencies:
-    "@nestcloud/boot" "^0.2.1"
+    "@nestcloud/boot" "^0.3.8"
 
-"@nestcloud/core@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/core/-/core-0.2.3.tgz#ca1b5126421691d33aac672a7215e5baa3d4b704"
+"@nestcloud/core@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/core/-/core-0.3.8.tgz#aac7ae107559eade9b5726ca7fa0ec569b76bb40"
 
-"@nestcloud/feign@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/feign/-/feign-0.2.3.tgz#334d879be0d6d91980c6df41c40b6a4731e2f2f0"
+"@nestcloud/feign@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/feign/-/feign-0.3.8.tgz#73770f86e50f21e04d73b3449f798103e84ee140"
   dependencies:
-    brakes "^2.7.0"
     lodash "^4.17.11"
     reflect-metadata "^0.1.12"
     uri-params "^0.1.3"
+    uuid "^3.3.2"
   optionalDependencies:
-    "@nestcloud/boot" "^0.2.1"
-    "@nestcloud/consul-config" "^0.2.1"
-    "@nestcloud/consul-loadbalance" "^0.2.1"
+    "@nestcloud/boot" "^0.3.8"
+    "@nestcloud/brakes" "^0.3.8"
+    "@nestcloud/consul-config" "^0.3.8"
+    "@nestcloud/consul-loadbalance" "^0.3.8"
 
-"@nestcloud/gateway@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/gateway/-/gateway-0.2.3.tgz#3105c0fe10325246ffed4042535e1cb975e99c50"
+"@nestcloud/gateway@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/gateway/-/gateway-0.3.8.tgz#47fc976093af3a1674d8e9d8bdcfead2dbcd8d0d"
   dependencies:
     http-proxy "^1.17.0"
+    ratelimiter "^3.3.0"
   optionalDependencies:
-    "@nestcloud/boot" "^0.2.1"
-    "@nestcloud/consul-config" "^0.2.1"
+    "@nestcloud/boot" "^0.3.8"
+    "@nestcloud/consul-config" "^0.3.8"
+    "@nestcloud/redis" "^0.3.8"
 
-"@nestcloud/logger@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/logger/-/logger-0.2.3.tgz#2d1d8bf2b49f386344e8d8abe2b040bceedfc908"
+"@nestcloud/logger@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/logger/-/logger-0.3.8.tgz#807e8739704441f120473948f4c3152017823785"
   dependencies:
     mkdirp "^0.5.1"
     moment "^2.24.0"
@@ -150,16 +128,23 @@
     winston "^2.4.2"
     winston-daily-rotate-file "^3.8.0"
 
-"@nestcloud/schedule@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/schedule/-/schedule-0.2.3.tgz#5cbf4b2274263371779128c18cac313c64496ce8"
+"@nestcloud/redis@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/redis/-/redis-0.3.8.tgz#a44bd3ffdedc2434fe4f9e6143707ec6f54220b2"
+  optionalDependencies:
+    "@nestcloud/boot" "^0.3.8"
+    "@nestcloud/consul-config" "^0.3.8"
+
+"@nestcloud/schedule@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/schedule/-/schedule-0.3.8.tgz#ab221de5b42e750bef4f06089161f9c0a3e7573b"
   dependencies:
     node-schedule "^1.3.0"
     reflect-metadata "^0.1.12"
 
-"@nestcloud/validations@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@nestcloud/validations/-/validations-0.2.3.tgz#185a8fdd5ff541c5261663f05bb16d1ca136acba"
+"@nestcloud/validations@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@nestcloud/validations/-/validations-0.3.8.tgz#719ed8a7f0fd437825f193799a0fefa26148a410"
   dependencies:
     class-transformer "^0.1.9"
     class-validator "^0.8.5"
@@ -830,7 +815,7 @@ bluebird@3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
-bluebird@^3.4.6, bluebird@^3.5.2:
+bluebird@^3.5.2:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
 
@@ -894,12 +879,6 @@ braces@^2.3.1, braces@^2.3.2:
     snapdragon-node "^2.0.1"
     split-string "^3.0.2"
     to-regex "^3.0.1"
-
-brakes@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/brakes/-/brakes-2.7.0.tgz#103c794bf3a21ac1098f84bf667d1466e002a4ff"
-  dependencies:
-    bluebird "^3.4.6"
 
 browser-process-hrtime@^0.1.2:
   version "0.1.3"
@@ -4210,6 +4189,10 @@ randomatic@^3.0.0:
 range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
+
+ratelimiter@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/ratelimiter/-/ratelimiter-3.3.0.tgz#bed9882f552e1aff4d7d3281bd1ab380f94cbf74"
 
 raw-body@2.3.3:
   version "2.3.3"

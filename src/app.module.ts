@@ -5,11 +5,13 @@ import { ConsulConfigModule } from '@nestcloud/consul-config';
 import { ConsulServiceModule } from '@nestcloud/consul-service';
 import { LoadbalanceModule } from '@nestcloud/consul-loadbalance';
 import { FeignModule } from '@nestcloud/feign';
+import { ScheduleModule } from '@nestcloud/schedule';
 import {
   NEST_BOOT,
   NEST_CONSUL_LOADBALANCE,
   NEST_BOOT_PROVIDER,
   NEST_TYPEORM_LOGGER_PROVIDER,
+  NEST_LOGGER,
   components,
   repositories,
 } from '@nestcloud/common';
@@ -37,6 +39,7 @@ const getTerminusOptions = (db: TypeOrmHealthIndicator): TerminusModuleOptions =
 @Module({
   imports: [
     LoggerModule.register(),
+    ScheduleModule.register({ logger: NEST_LOGGER }),
     BootModule.register(__dirname, `bootstrap-${ process.env.NODE_ENV || 'development' }.yml`),
     ConsulModule.register({ dependencies: [NEST_BOOT] }),
     ConsulConfigModule.register({ dependencies: [NEST_BOOT] }),

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query, Req } from '@nestjs/common';
 import { IsValid, IsNotEmpty } from '@nestcloud/validations';
 import { User } from '../entities';
 import { UserRepository } from '../repositories';
@@ -13,7 +13,8 @@ export class UserController {
   }
 
   @Get()
-  async getUsers(@Query('remote') isRemote: boolean) {
+  async getUsers(@Query('remote') isRemote: boolean, @Req() req) {
+    console.log(req.headers);
     if (isRemote) {
       return await this.userService.getRemoteUsers();
     }
