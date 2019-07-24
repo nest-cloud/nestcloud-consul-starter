@@ -21,7 +21,7 @@ dataSource:
   password: ${{ DB_PWD }}
   synchronize: false
   maxQueryExecutionTime: 1000
-gateway:
+proxy:
   routes:
     - id: user
       # self
