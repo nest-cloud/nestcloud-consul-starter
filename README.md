@@ -1,4 +1,3 @@
-
 [travis-image]: https://api.travis-ci.org/nest-cloud/nestcloud.svg?branch=master
 [travis-url]: https://travis-ci.org/nest-cloud/nestcloud
 [linux-image]: https://img.shields.io/travis/nest-cloud/nestcloud/master.svg?label=linux
@@ -27,12 +26,12 @@ $ yarn install
 
 ## Dependencies
 
-* Consul
-* Mysql
+- Consul
+- Mysql
 
 ```bash
 docker run -d --name=dev-consul -e CONSUL_BIND_INTERFACE=eth0 -p 8500:8500 consul
-docker run -d --name dev-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysql
+docker run -d --name dev-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=nestcloud -p 3306:3306 mysql:5.7
 ```
 
 ## Running the app
@@ -54,4 +53,4 @@ npm run start:prod
 
 ## License
 
-  Nest is [MIT licensed](LICENSE).
+Nest is [MIT licensed](LICENSE).

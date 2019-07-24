@@ -18,10 +18,19 @@ dataSource:
   host: localhost
   port: 3306
   username: root
-  password:
+  password: my-secret-pw
   synchronize: true
   maxQueryExecutionTime: 1000
-gateway:
+loadbalance:
+  # Supports:
+  # RandomRule
+  # RoundRobinRule
+  # WeightedResponseTimeRule
+  ruleCls: RandomRule
+  rules:
+    - service: your-service-name
+      ruleCls: RoundRobinRule
+proxy:
   routes:
     - id: user
       # self
@@ -63,4 +72,3 @@ logger:
       maxFiles: 10
 custom:
   data: test
-

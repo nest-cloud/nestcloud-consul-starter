@@ -28,16 +28,16 @@ export class ScheduleService extends NestSchedule {
 
   @Interval(2000)
   intervalBootJob() {
-    this.logger.info('interval get custom data from boot: ', this.customData);
+    this.logger.log('interval get custom data from boot: ', this.customData);
   }
 
   @Interval(2000)
   intervalConsulConfigJob() {
-    this.logger.info('interval get custom from consul config: ', this.consulCustomData);
+    this.logger.log('interval get custom from consul config: ', this.consulCustomData);
   }
 
   @Interval(2000)
   intervalConsulJob() {
-    this.logger.info('interval get custom from consul: ', this.consulData);
+    this.logger.log('interval get custom from consul: ', this.consulData);
   }
 }

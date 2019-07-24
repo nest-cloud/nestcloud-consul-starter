@@ -3,21 +3,21 @@ import { BootModule, Boot } from '@nestcloud/boot';
 import { ConsulModule } from '@nestcloud/consul';
 import { ConsulConfigModule } from '@nestcloud/consul-config';
 import { ConsulServiceModule } from '@nestcloud/consul-service';
-import { LoadbalanceModule } from '@nestcloud/consul-loadbalance';
+import { LoadbalanceModule } from '@nestcloud/loadbalance';
 import { FeignModule } from '@nestcloud/feign';
 import { ScheduleModule } from '@nestcloud/schedule';
 import {
   NEST_BOOT,
-  NEST_CONSUL_LOADBALANCE,
+  NEST_LOADBALANCE,
   NEST_BOOT_PROVIDER,
   NEST_TYPEORM_LOGGER_PROVIDER,
-  NEST_LOGGER,
   components,
   repositories,
+  NEST_LOGGER,
 } from '@nestcloud/common';
 import { TypeOrmHealthIndicator, TerminusModule, TerminusModuleOptions } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { GatewayModule } from '@nestcloud/gateway';
+import { ProxyModule } from '@nestcloud/proxy';
 
 import * as controllers from './controllers';
 import * as repos from './repositories';
@@ -39,14 +39,14 @@ const getTerminusOptions = (db: TypeOrmHealthIndicator): TerminusModuleOptions =
 @Module({
   imports: [
     LoggerModule.register(),
-    ScheduleModule.register({ logger: NEST_LOGGER }),
-    BootModule.register(__dirname, `bootstrap-${ process.env.NODE_ENV || 'development' }.yml`),
+    ScheduleModule.register(),
+    BootModule.register(__dirname, `bootstrap-${process.env.NODE_ENV || 'development'}.yml`),
     ConsulModule.register({ dependencies: [NEST_BOOT] }),
     ConsulConfigModule.register({ dependencies: [NEST_BOOT] }),
     ConsulServiceModule.register({ dependencies: [NEST_BOOT] }),
     LoadbalanceModule.register({ dependencies: [NEST_BOOT] }),
-    FeignModule.register({ dependencies: [NEST_CONSUL_LOADBALANCE] }),
-    GatewayModule.register({ dependencies: [NEST_BOOT] }),
+    FeignModule.register({ dependencies: [NEST_LOADBALANCE] }),
+    ProxyModule.register({ dependencies: [NEST_BOOT] }),
     TerminusModule.forRootAsync({
       inject: [TypeOrmHealthIndicator],
       useFactory: db => getTerminusOptions(db as TypeOrmHealthIndicator),
@@ -57,8 +57,8 @@ const getTerminusOptions = (db: TypeOrmHealthIndicator): TerminusModuleOptions =
         host: config.get('dataSource.host', 'localhost'),
         port: config.get('dataSource.port', 3306),
         username: config.get('dataSource.username', 'root'),
-        password: config.get('dataSource.password', ''),
-        database: config.get('dataSource.database', 'nestcloud_user'),
+        password: config.get('dataSource.password', 'my-secret-pw'),
+        database: config.get('dataSource.database', 'nestcloud'),
         entities: [__dirname + '/entities/*{.ts,.js}'],
         synchronize: config.get('dataSource.synchronize', false),
         maxQueryExecutionTime: config.get('dataSource.maxQueryExecutionTime', 1000),
