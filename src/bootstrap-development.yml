@@ -7,19 +7,18 @@ consul:
     interval: 10s
   maxRetry: 5
   retryInterval: 5000
-  config:
-    key: nestcloud-starter-service-config
-    retry: 5
   service:
     id: null
     name: nestcloud-starter-service
     port: 8081
+config:
+  key: nestcloud-starter-service-config
 dataSource:
   host: localhost
   port: 3306
   username: root
   password: my-secret-pw
-  synchronize: true
+  synchronize: false
   maxQueryExecutionTime: 1000
 loadbalance:
   # Supports:

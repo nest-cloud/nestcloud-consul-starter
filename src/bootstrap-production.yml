@@ -7,13 +7,13 @@ consul:
     interval: 10s
   maxRetry: 5
   retryInterval: 5000
-  config:
-    key: nestcloud-starter-service-config
-    retry: 5
   service:
     id: null
     name: nestcloud-starter-service
     port: ${{ PORT }}
+config:
+  key: nestcloud-starter-service-config
+  retry: 5
 dataSource:
   host: ${{ DB_HOST }}
   port: ${{ DB_PORT }}
