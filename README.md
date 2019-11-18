@@ -14,9 +14,7 @@
     <a href="https://coveralls.io/github/nest-cloud/nestcloud?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nest-cloud/nestcloud/badge.svg?branch=master" alt="Coverage"/></a>
 </p>
 
-A NodeJS micro-service solution based on Consul, writing by Typescript language and NestJS framework.
-
-This starter is for NestCloud above v0.2.1, NestCloud@0.1.0 ~ 0.2.0 Please see ([nestcloud-starter@v0.1.x](https://github.com/nest-cloud/nestcloud-starter/tree/v0.1.x)).
+A NodeJS micro-service solution that writing by Typescript language and NestJS framework.
 
 ## Installation
 
@@ -27,11 +25,9 @@ $ yarn install
 ## Dependencies
 
 - Consul
-- Mysql
 
 ```bash
 docker run -d --name=dev-consul -e CONSUL_BIND_INTERFACE=eth0 -p 8500:8500 consul
-docker run -d --name dev-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=nestcloud -p 3306:3306 mysql:5.7
 ```
 
 ## Running the app
@@ -49,7 +45,7 @@ npm run start:prod
 
 ## Stay in touch
 
-- Author - [Miaowing](https://github.com/miaowing)
+- Author - [NestCloud](https://github.com/nest-cloud)
 
 ## License
 
