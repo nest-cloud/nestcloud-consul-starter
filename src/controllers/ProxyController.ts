@@ -12,7 +12,7 @@ export class ProxyController {
   }
 
   @All()
-  do(@Req() req: Request, @Res() res: Response, @Param('service') id) {
-    this.proxy.forward(req, res, id);
+  async do(@Req() req: Request, @Res() res: Response, @Param('service') id) {
+    await this.proxy.forward(req, res, id);
   }
 }

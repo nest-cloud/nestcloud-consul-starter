@@ -1,20 +1,17 @@
 import { Body, Controller, Get, Param, Post, Put, Query, Req } from '@nestjs/common';
 import { IsValid, IsNotEmpty } from '@nestcloud/validations';
-import { User } from '../entities';
-import { UserRepository } from '../repositories';
+import { User } from '../models';
 import { UserService } from '../services';
 
 @Controller('users')
 export class UserController {
   constructor(
-    private readonly userRepo: UserRepository,
     private readonly userService: UserService,
   ) {
   }
 
   @Get()
   async getUsers(@Query('remote') isRemote: boolean, @Req() req) {
-    console.log(req.headers);
     if (isRemote) {
       return await this.userService.getRemoteUsers();
     }
@@ -23,11 +20,9 @@ export class UserController {
 
   @Post()
   async createUser(@Body('user', new IsValid()) user: User) {
-    await this.userRepo.save(user);
   }
 
   @Put(':userId')
   async updateUser(@Param('userId') userId: string, @Body('name', new IsNotEmpty()) name: string) {
-    await this.userRepo.update(userId, { name });
   }
 }

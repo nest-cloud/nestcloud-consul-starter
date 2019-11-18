@@ -1,18 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from '../repositories';
 import { UserClient } from '../clients';
-import { User } from '../entities';
+import { User } from '../models';
 
 @Injectable()
 export class UserService {
   constructor(
-    private readonly userRepo: UserRepository,
     private readonly userClient: UserClient,
   ) {
   }
 
   async getUsers(): Promise<User[]> {
-    return await this.userRepo.find();
+    return [{ id: '1', name: 'test' }];
   }
 
   async getRemoteUsers(): Promise<User[]> {
