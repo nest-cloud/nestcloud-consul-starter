@@ -1,16 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestLogger } from '@nestcloud/logger';
-import { NestCloud } from '@nestcloud/core';
-import { context, filename } from './config';
-
-// https
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+import { BOOT, IBoot } from '@nestcloud/common';
+import { resolve } from 'path';
 
 async function bootstrap() {
-  const app = NestCloud.create(await NestFactory.create(AppModule, {
-    logger: new NestLogger({ path: context, filename }),
-  }));
+  const app = await NestFactory.create(AppModule, {
+    logger: new NestLogger({
+      filePath: resolve(__dirname, './config.yaml'),
+    }),
+  });
 
   process.on('SIGINT', async () => {
     setTimeout(() => process.exit(1), 5000);
@@ -25,7 +24,8 @@ async function bootstrap() {
     process.exit(0);
   });
 
-  await app.listen(NestCloud.global.boot.get('consul.service.port', 8081));
+  const boot = app.get<IBoot>(BOOT);
+  await app.listen(boot.get('service.port', 3000));
 }
 
 bootstrap();

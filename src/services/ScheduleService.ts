@@ -1,28 +1,30 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { NestSchedule, Interval } from '@nestcloud/schedule';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { Interval } from '@nestcloud/schedule';
 import { InjectLogger } from '@nestcloud/logger';
 import { BootValue } from '@nestcloud/boot';
 import { ConfigValue } from '@nestcloud/config';
-import { WatchKV } from '@nestcloud/consul';
+import { Schedule } from '@nestcloud/schedule';
 
 @Injectable()
-export class ScheduleService extends NestSchedule {
+export class ScheduleService implements OnModuleInit {
   @BootValue('custom.data', 'default custom data')
   private readonly customData: string;
 
   // In this project, the consul key is 'nestcloud-starter-service-config'
   // Please insert data in it.
-  @ConfigValue('custom.data', 'default custom data')
+  @ConfigValue('test', 'default custom data')
   private readonly consulCustomData: string;
-
-  // Please insert text into consul kv 'test-key'
-  @WatchKV('test-key', 'text', 'default consul data')
-  private readonly consulData: string;
 
   public constructor(
     @InjectLogger() private readonly logger: Logger,
+    private schedule: Schedule,
   ) {
-    super();
+  }
+
+  onModuleInit(): any {
+    this.schedule.createTimeoutJob(() => {
+      this.logger.log('execute timeout job');
+    }, 3000);
   }
 
   @Interval(2000)
@@ -33,10 +35,5 @@ export class ScheduleService extends NestSchedule {
   @Interval(2000)
   intervalConsulConfigJob() {
     this.logger.log(`interval get custom from consul config: ${this.consulCustomData}`);
-  }
-
-  @Interval(2000)
-  intervalConsulJob() {
-    this.logger.log(`interval get custom from consul: ${this.consulData}`);
   }
 }

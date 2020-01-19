@@ -1,2 +1,1 @@
-export * from './UserClient';
-export * from './ArticleClient';
+export * from './GithubClient';

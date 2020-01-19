@@ -5,6 +5,7 @@
     "no-unused-expression": true
   },
   "rules": {
+    "no-empty": false,
     "quotemark": [true, "single"],
     "member-access": [false],
     "ordered-imports": [false],

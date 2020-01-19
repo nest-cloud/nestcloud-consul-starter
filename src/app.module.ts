@@ -4,14 +4,9 @@ import { ConsulModule } from '@nestcloud/consul';
 import { ConfigModule } from '@nestcloud/config';
 import { ServiceModule } from '@nestcloud/service';
 import { LoadbalanceModule } from '@nestcloud/loadbalance';
-import { FeignModule } from '@nestcloud/feign';
+import { HttpModule } from '@nestcloud/http';
 import { ScheduleModule } from '@nestcloud/schedule';
-import {
-  NEST_BOOT,
-  NEST_LOADBALANCE,
-  components,
-  NEST_CONSUL,
-} from '@nestcloud/common';
+import { BOOT, LOADBALANCE, components, CONSUL } from '@nestcloud/common';
 import { TypeOrmHealthIndicator, TerminusModule } from '@nestjs/terminus';
 import { ProxyModule } from '@nestcloud/proxy';
 
@@ -19,18 +14,21 @@ import * as controllers from './controllers';
 import * as services from './services';
 import * as clients from './clients';
 import { LoggerModule } from '@nestcloud/logger';
+import { resolve } from 'path';
 
 @Module({
   imports: [
-    LoggerModule.register(),
-    ScheduleModule.register(),
-    BootModule.register(__dirname, `bootstrap-${process.env.NODE_ENV || 'development'}.yml`),
-    ConsulModule.register({ dependencies: [NEST_BOOT] }),
-    ConfigModule.register({ dependencies: [NEST_BOOT, NEST_CONSUL] }),
-    ServiceModule.register({ dependencies: [NEST_BOOT, NEST_CONSUL] }),
-    LoadbalanceModule.register({ dependencies: [NEST_BOOT] }),
-    FeignModule.register({ dependencies: [NEST_LOADBALANCE] }),
-    ProxyModule.register({ dependencies: [NEST_BOOT, NEST_LOADBALANCE] }),
+    LoggerModule.forRoot(),
+    ScheduleModule.forRoot(),
+    BootModule.forRoot({
+      filePath: resolve(__dirname, 'config.yaml'),
+    }),
+    ConsulModule.forRootAsync({ inject: [BOOT] }),
+    ConfigModule.forRootAsync({ inject: [BOOT, CONSUL] }),
+    ServiceModule.forRootAsync({ inject: [BOOT, CONSUL] }),
+    LoadbalanceModule.forRootAsync({ inject: [BOOT] }),
+    HttpModule.forRootAsync({ inject: [LOADBALANCE] }),
+    ProxyModule.forRootAsync({ inject: [BOOT, LOADBALANCE] }),
     TerminusModule.forRootAsync({
       inject: [TypeOrmHealthIndicator],
       useFactory: () => ({ endpoints: [{ url: '/health', healthIndicators: [] }] }),
