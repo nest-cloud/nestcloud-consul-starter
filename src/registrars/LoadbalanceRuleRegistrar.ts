@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { UseRules } from '@nestcloud/loadbalance';
-import { CustomLoadbalanceRule } from './CustomLoadbalanceRule';
+import { CustomLoadbalanceRule } from '../lb-rules/CustomLoadbalanceRule';
 
 @Injectable()
 @UseRules(CustomLoadbalanceRule)
-export class LoadbalanceRuleRegister {
+export class LoadbalanceRuleRegistrar {
 }
